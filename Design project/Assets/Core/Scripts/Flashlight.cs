@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Flashlight : MonoBehaviour, IInteractable
+public class Flashlight : MonoBehaviour, IInteractable, IItem
 {
-    bool equip = true;
+    const bool equip = true;
+    bool equiped = false;
     Inventory inv;
     [SerializeField]
     Sprite icon;
+    Transform lights;
+    Interact interact;
 
     #region Properties
     public bool Equip
@@ -31,15 +34,19 @@ public class Flashlight : MonoBehaviour, IInteractable
     void Start ()
     {
         inv = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Inventory>();
+        lights = transform.GetChild(0);
+        interact = FindObjectOfType<Interact>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-		
+        if (equiped && Input.GetKeyDown(KeyCode.E) && !interact.InteractIsActive) //Toggles the flashlight
+            lights.gameObject.SetActive(!lights.gameObject.activeInHierarchy);
 	}
     public void Interact()
     {
         inv.AddItem(gameObject);
+        equiped = true;
     }
 }

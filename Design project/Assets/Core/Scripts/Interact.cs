@@ -6,18 +6,11 @@ using UnityEngine.UI;
 public interface IInteractable
 {
     void Interact();
-    bool Equip
-    {
-        get;
-    }
     GameObject Gameobject
     {
         get;
     }
-    Sprite Icon
-    {
-        get;
-    }
+    
 }
 
 public class Interact : MonoBehaviour
@@ -31,6 +24,12 @@ public class Interact : MonoBehaviour
     GameObject interactIcon;
     Transform Camera;
     #endregion
+
+    public bool InteractIsActive
+    {
+        get { return interact; }
+    }
+
     // Use this for initialization
     void Start()
     {
