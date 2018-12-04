@@ -10,13 +10,17 @@ public class Flashlight : MonoBehaviour, IInteractable, IItem
     Inventory inv;
     [SerializeField]
     Sprite icon;
+    [SerializeField]
+    AudioClip[] sounds;
     Transform lights;
     Interact interact;
+    AudioSource sfx;
+
 
     #region Properties
     public bool Equip
     {
-        get{ return equip; }
+        get { return equip; }
     }
 
     public GameObject Gameobject
@@ -31,19 +35,27 @@ public class Flashlight : MonoBehaviour, IInteractable, IItem
 
     #endregion
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         inv = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Inventory>();
         lights = transform.GetChild(0);
         interact = FindObjectOfType<Interact>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        sfx = GetComponent<AudioSource>();
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         if (equiped && Input.GetKeyDown(KeyCode.E) && !interact.InteractIsActive) //Toggles the flashlight
+        {
             lights.gameObject.SetActive(!lights.gameObject.activeInHierarchy);
-	}
+            if (lights.gameObject.activeInHierarchy)
+                sfx.clip = sounds[0];
+            else
+                sfx.clip = sounds[1];
+            sfx.Play();
+        }
+    }
     public void Interact()
     {
         inv.AddItem(gameObject);
