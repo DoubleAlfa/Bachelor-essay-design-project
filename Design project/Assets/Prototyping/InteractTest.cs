@@ -23,6 +23,7 @@ public class InteractTest : MonoBehaviour, IInteractable
                 spin = false;
                 transform.Rotate(Vector3.down * (counter - 90));
                 counter = 0;
+                tag = "Interactable";
             }
         }
     }
@@ -32,6 +33,7 @@ public class InteractTest : MonoBehaviour, IInteractable
         if(!spin)
         {
             spin = true;
+            tag = "Untagged";
         }
     }
 

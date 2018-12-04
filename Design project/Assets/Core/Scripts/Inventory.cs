@@ -43,7 +43,6 @@ public class Inventory : MonoBehaviour
             _newItem.transform.SetParent(transform);
             _newItem.transform.position = transform.position;
             _newItem.transform.rotation = transform.rotation;
-            _newItem.transform.Rotate(Vector3.right * 90);
         }
 
     }
