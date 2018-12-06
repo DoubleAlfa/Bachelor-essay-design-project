@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12562892c29f2ed4cb974de654db4c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 9371d95a1afe87a4182e3feb69e306a2, type: 3}
+  icon: {fileID: 21300000, guid: 32410f49d17ad50438fd8f70466d478a, type: 3}
   sounds:
   - {fileID: 8300000, guid: 7c7e42e84c46924488e1e950eebb6f83, type: 3}
   - {fileID: 8300000, guid: c17c279027cdc5c4e9dac10e66415221, type: 3}
