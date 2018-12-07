@@ -152,12 +152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114724567463175252, guid: 155b48134eb9753499c352f94436decf,
-        type: 2}
-      propertyPath: icon
-      value: 
-      objectReference: {fileID: 21300000, guid: 32410f49d17ad50438fd8f70466d478a,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 155b48134eb9753499c352f94436decf, type: 2}
   m_IsPrefabAsset: 0
