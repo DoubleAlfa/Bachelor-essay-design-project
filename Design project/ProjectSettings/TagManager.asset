@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - Canvas
+  - GameManager
   layers:
   - Default
   - TransparentFX
