@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public interface IInteractable
 {
     void Interact();
+    void Highlight(bool isActive);
 
     GameObject Gameobject
     {
@@ -24,6 +25,7 @@ public class Interact : MonoBehaviour
     RaycastHit hit;
     GameObject interactIcon;
     Transform camera;
+    GameManager gm;
     #endregion
 
     public bool InteractIsActive
@@ -34,6 +36,7 @@ public class Interact : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         camera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         interactIcon = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).gameObject;
         InteractActive(false);
@@ -43,7 +46,7 @@ public class Interact : MonoBehaviour
     void Update()
     {
         //Uses spherecast (wider raycast) to detect if we're looking at something we can interact with
-        if (Physics.SphereCast(camera.position,0.2f,camera.forward, out hit, interactRange))
+        if (Physics.SphereCast(camera.position,0.1f,camera.forward, out hit, interactRange))
         {
             //If its interactable, show that we can interact with it
             if (hit.transform.tag == "Interactable" && objectName != hit.transform.name)
@@ -71,13 +74,20 @@ public class Interact : MonoBehaviour
     void InteractActive(bool active) //Toggles if interact-mode is active or not.
     {
         interact = active;
+        if (objectName != "")
+        {
+            print(objectName);
+            interactObject.Highlight(false);
+        }
         if (active)
         {
             interactObject = hit.transform.GetComponent<IInteractable>();
             objectName = hit.transform.name;
+            interactObject.Highlight(true);
         }
         else
         {
+            
             objectName = "";
         }
         interactIcon.SetActive(active);

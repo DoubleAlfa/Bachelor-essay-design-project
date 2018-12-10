@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractTest : MonoBehaviour, IInteractable
+public class InteractTest : Interactable, IInteractable
 {
     float counter;
     bool spin;
+
+
     public GameObject Gameobject
     {
         get { return gameObject; }
     }
+    
     
     void Update()
     {

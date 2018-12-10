@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Flashlight : MonoBehaviour, IInteractable, IItem
+public class Flashlight : Interactable, IInteractable, IItem
 {
     const bool equip = true;
     bool equiped = false;
@@ -35,8 +35,9 @@ public class Flashlight : MonoBehaviour, IInteractable, IItem
 
     #endregion
     // Use this for initialization
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         inv = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Inventory>();
         lights = transform.GetChild(0);
         interact = FindObjectOfType<Interact>();

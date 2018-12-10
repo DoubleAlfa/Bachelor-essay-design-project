@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Book : MonoBehaviour, IInteractable
+public class Book : Interactable, IInteractable
 {
-
+    #region variables
     [SerializeField]
     bool containsKeyCard;
     [SerializeField]
@@ -16,12 +16,13 @@ public class Book : MonoBehaviour, IInteractable
     bool isOpen;
     Text page1;
     Text page2;
-    string[] subjects = new string[] { "He", "She", "They", "Dogge", "Ferre", "A child", "The one who can't be named", "The friend", "A mysterious man", "A mysterious Woman", "A mysterious person", "God", "Their arch enemy" };
-    string[] verbs = { "used", "saw", "ate", "caught", "threw", "hid", "fetched", "polished", "stepped on" };
+    string[] subjects = new string[] { "He", "She", "They", "Dogge", "Ferre", "A child", "The one who can't be named", "The friend", "A mysterious man", "A mysterious Woman", "A mysterious person", "God", "Their arch enemy", "Erkan" };
+    string[] verbs = { "used", "saw", "ate", "caught", "threw", "hid", "fetched", "polished", "stepped on", "drew" };
     string[] aAn = { "a", "an", "the" };
     string[] adjectives = { "blue", "black", "yellow", "orange", "pink", "purple", "black", "grey", "green", "white", "red", "small", "big", "average sized", "jolly", "warm", "cold", "beautiful", "legendary", "evil" };
-    string[] items = { "person", "apple", "boat", "rabbit", "animal", "friend", "sword", "piece of food", "item", "hat", "wand", "cloak", "silverware", "doorknob" };
+    string[] items = { "person", "apple", "boat", "rabbit", "animal", "friend", "sword", "piece of food", "item", "hat", "wand", "cloak", "silverware", "doorknob", "air guitar elemental" };
     string[][] words = new string[5][];
+    #endregion
 
     public GameObject Gameobject
     {
@@ -29,8 +30,9 @@ public class Book : MonoBehaviour, IInteractable
     }
 
     // Use this for initialization
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         words = new string[][] { subjects, verbs, aAn, adjectives, items };
         hint = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(2).gameObject; //Gets the GameObject that contains the hint image.
         hintImage = hint.GetComponent<Image>();
@@ -43,6 +45,7 @@ public class Book : MonoBehaviour, IInteractable
         {
             hint.SetActive(false);
             isOpen = false;
+            gm.State = Gamestate.Playing;
         }
     }
 
@@ -57,6 +60,7 @@ public class Book : MonoBehaviour, IInteractable
         hint.SetActive(true);
         hintImage.sprite = message;
         isOpen = true;
+        gm.State = Gamestate.Reading;
     }
 
     void GenerateText(Text t)
@@ -74,7 +78,7 @@ public class Book : MonoBehaviour, IInteractable
                 int the = Random.Range(1, aAn.Length);
                 if (the == 1)
                 {
-                    if (!isVowel(adjective[0]))
+                    if (!IsVowel(adjective[0]))
                         the = 0;
                 }
                 text += aAn[the] + " ";
@@ -87,9 +91,9 @@ public class Book : MonoBehaviour, IInteractable
         t.text = text;
     }
 
-    bool isVowel(char c)
+    bool IsVowel(char c)
     {
-        switch(c)
+        switch (c)
         {
             case 'a':
             case 'e':
@@ -101,4 +105,6 @@ public class Book : MonoBehaviour, IInteractable
         }
         return false;
     }
+
+    
 }
