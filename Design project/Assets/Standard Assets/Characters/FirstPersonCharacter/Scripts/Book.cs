@@ -7,15 +7,23 @@ public class Book : Interactable, IInteractable
 {
     #region variables
     [SerializeField]
-    bool containsKeyCard;
-    [SerializeField]
     Sprite message;
     GameObject hint;
     Image hintImage;
+    GameObject postIt;
+    Image postItSymbol;
     bool firstOpen = true;
     bool isOpen;
+    bool pullBook;
     Text page1;
     Text page2;
+    SpriteRenderer symbol;
+    [SerializeField]
+    Sprite nextBook;
+    [SerializeField]
+    GameObject keyCard;
+    float posCounter = 0;
+    float pullSpeed = 0.5f;
     string[] subjects = new string[] { "He", "She", "They", "Dogge", "Ferre", "A child", "The one who can't be named", "The friend", "A mysterious man", "A mysterious Woman", "A mysterious person", "God", "Their arch enemy", "Erkan" };
     string[] verbs = { "used", "saw", "ate", "caught", "threw", "hid", "fetched", "polished", "stepped on", "drew" };
     string[] aAn = { "a", "an", "the" };
@@ -36,8 +44,11 @@ public class Book : Interactable, IInteractable
         words = new string[][] { subjects, verbs, aAn, adjectives, items };
         hint = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(2).gameObject; //Gets the GameObject that contains the hint image.
         hintImage = hint.GetComponent<Image>();
+        postIt = hint.transform.GetChild(2).gameObject;
+        postItSymbol = postIt.transform.GetChild(0).GetComponent<Image>();
         page1 = hintImage.transform.GetChild(0).GetComponent<Text>();
         page2 = hintImage.transform.GetChild(1).GetComponent<Text>();
+        symbol = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
     void Update()
     {
@@ -47,20 +58,65 @@ public class Book : Interactable, IInteractable
             isOpen = false;
             gm.State = Gamestate.Playing;
         }
+        if (pullBook) //If the book contains the keycard, we want to pull the book out
+        {
+            if (keyCard != null)
+            {
+                posCounter += Time.deltaTime * pullSpeed;
+                transform.Translate(Vector3.forward * Time.deltaTime * pullSpeed);
+                if (posCounter >= 0.5f && keyCard != null)
+                {
+                    keyCard.SetActive(true);
+                    keyCard.transform.position = transform.position;
+                    keyCard = null;
+                }
+            }
+
+            else
+            {
+                posCounter -= Time.deltaTime * pullSpeed;
+                transform.Translate(Vector3.back * Time.deltaTime * pullSpeed);
+                if (posCounter <= 0)
+                {
+                    posCounter = 0;
+                    pullBook = false;
+                    GetComponent<Rigidbody>().useGravity = true;
+                    GetComponent<Rigidbody>().freezeRotation = false;
+                }
+            }
+        }
     }
 
     public void Interact()
     {
-        if (firstOpen)
+        if (keyCard == null)
         {
-            GenerateText(page1);
-            GenerateText(page2);
-            firstOpen = false;
+            if (firstOpen)
+            {
+                GenerateText(page1);
+                GenerateText(page2);
+                firstOpen = false;
+            }
+            hint.SetActive(true);
+            hintImage.sprite = message;
+            isOpen = true;
+            if (nextBook != null)
+            {
+                postIt.SetActive(true);
+                postItSymbol.sprite = nextBook;
+            }
+
+            else
+                postIt.SetActive(false);
+            gm.State = Gamestate.Reading;
         }
-        hint.SetActive(true);
-        hintImage.sprite = message;
-        isOpen = true;
-        gm.State = Gamestate.Reading;
+        else
+        {
+            GetComponent<Rigidbody>().useGravity = false;
+            GetComponent<Rigidbody>().freezeRotation = true;
+            pullBook = true;
+        }
+
     }
 
     void GenerateText(Text t)
@@ -106,5 +162,5 @@ public class Book : Interactable, IInteractable
         return false;
     }
 
-    
+
 }
