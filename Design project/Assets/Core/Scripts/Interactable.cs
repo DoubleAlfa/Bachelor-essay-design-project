@@ -14,6 +14,7 @@ public class Interactable : MonoBehaviour {
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        
     }
 
 

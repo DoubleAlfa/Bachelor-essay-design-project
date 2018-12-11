@@ -45,8 +45,9 @@ public class Interact : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Uses spherecast (wider raycast) to detect if we're looking at something we can interact with
-        if (Physics.SphereCast(camera.position,0.1f,camera.forward, out hit, interactRange))
+        Debug.DrawRay(camera.position, camera.forward);
+        //Uses raycast to detect if we're looking at something we can interact with
+        if (Physics.Raycast(camera.position,camera.forward, out hit, interactRange))
         {
             //If its interactable, show that we can interact with it
             if (hit.transform.tag == "Interactable" && objectName != hit.transform.name)
@@ -76,7 +77,6 @@ public class Interact : MonoBehaviour
         interact = active;
         if (objectName != "")
         {
-            print(objectName);
             interactObject.Highlight(false);
         }
         if (active)

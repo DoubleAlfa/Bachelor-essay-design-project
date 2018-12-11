@@ -12,6 +12,7 @@ public class Book : Interactable, IInteractable
     Image hintImage;
     GameObject postIt;
     Image postItSymbol;
+    Rigidbody body;
     bool firstOpen = true;
     bool isOpen;
     bool pullBook;
@@ -80,8 +81,9 @@ public class Book : Interactable, IInteractable
                 {
                     posCounter = 0;
                     pullBook = false;
-                    GetComponent<Rigidbody>().useGravity = true;
-                    GetComponent<Rigidbody>().freezeRotation = false;
+                    body.useGravity = true;
+                    body.freezeRotation = false;
+                    body.detectCollisions = true;
                 }
             }
         }
@@ -112,8 +114,10 @@ public class Book : Interactable, IInteractable
         }
         else
         {
-            GetComponent<Rigidbody>().useGravity = false;
-            GetComponent<Rigidbody>().freezeRotation = true;
+            body = GetComponent<Rigidbody>();
+            body.detectCollisions = false;
+            body.freezeRotation = true;
+            body.useGravity = false;
             pullBook = true;
         }
 
