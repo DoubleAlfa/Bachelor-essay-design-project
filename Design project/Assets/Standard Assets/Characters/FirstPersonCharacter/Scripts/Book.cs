@@ -12,10 +12,15 @@ public class Book : Interactable, IInteractable
     Sprite message;
     GameObject hint;
     Image hintImage;
+    GameObject postIt;
+    Image postItSymbol;
     bool firstOpen = true;
     bool isOpen;
     Text page1;
     Text page2;
+    SpriteRenderer symbol;
+    [SerializeField]
+    Sprite nextBook;
     string[] subjects = new string[] { "He", "She", "They", "Dogge", "Ferre", "A child", "The one who can't be named", "The friend", "A mysterious man", "A mysterious Woman", "A mysterious person", "God", "Their arch enemy", "Erkan" };
     string[] verbs = { "used", "saw", "ate", "caught", "threw", "hid", "fetched", "polished", "stepped on", "drew" };
     string[] aAn = { "a", "an", "the" };
@@ -36,8 +41,11 @@ public class Book : Interactable, IInteractable
         words = new string[][] { subjects, verbs, aAn, adjectives, items };
         hint = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(2).gameObject; //Gets the GameObject that contains the hint image.
         hintImage = hint.GetComponent<Image>();
+        postIt = hint.transform.GetChild(2).gameObject;
+        postItSymbol = postIt.transform.GetChild(0).GetComponent<Image>();
         page1 = hintImage.transform.GetChild(0).GetComponent<Text>();
         page2 = hintImage.transform.GetChild(1).GetComponent<Text>();
+        symbol = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
     void Update()
     {
@@ -60,6 +68,14 @@ public class Book : Interactable, IInteractable
         hint.SetActive(true);
         hintImage.sprite = message;
         isOpen = true;
+        if (nextBook != null)
+        {
+            postIt.SetActive(true);
+            postItSymbol.sprite = nextBook;
+        }
+
+        else
+            postIt.SetActive(false);
         gm.State = Gamestate.Reading;
     }
 
@@ -106,5 +122,5 @@ public class Book : Interactable, IInteractable
         return false;
     }
 
-    
+
 }
