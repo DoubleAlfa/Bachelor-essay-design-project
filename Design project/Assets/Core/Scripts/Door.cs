@@ -6,28 +6,36 @@ public class Door : Interactable, IInteractable {
 
     [SerializeField]
     bool locked;
+    [SerializeField]
+    string code;
+    [SerializeField]
+    AudioClip notOpen;
+    [SerializeField]
+    AudioClip Open;
     Inventory inv;
+
+    
 	// Use this for initialization
-	void Start ()
+	protected override void Start ()
     {
-        inv = GameObject.FindGameObjectWithTag("Player");	
-	}
+        base.Start();
+        inv = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).GetComponent<Inventory>();
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	
     public void Interact()
     {
-
+        if(locked)
+        {
+            
+        }
     }
     public override void Highlight(bool active)
     {
         if (active)
         {
-            if (!locked)
+            if (!locked || hasKeyCard(inv.PlayerInventory))
                 rend.material.color = Color.green;
-            else if()
             else
             {
                 rend.material.color = Color.red;
@@ -35,5 +43,18 @@ public class Door : Interactable, IInteractable {
         }
         else
             rend.material.color = startColor;
+    }
+
+    bool hasKeyCard(List<GameObject> inventory)
+    {
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            if(inventory[0].name.Length >=7 &&inventory[0].name.Substring(0,7) == "KeyCard")
+            {
+                if (inventory[0].GetComponent<Keycard>().ToDoor == code)
+                    return true;
+            }
+        }
+        return false;
     }
 }

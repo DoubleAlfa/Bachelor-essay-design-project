@@ -22,6 +22,11 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     Image image;
 
+    public List<GameObject> PlayerInventory
+    {
+        get { return inventory; }
+    }
+
 	// Use this for initialization
 	void Start ()
     {
@@ -44,6 +49,5 @@ public class Inventory : MonoBehaviour
             _newItem.transform.position = transform.position;
             _newItem.transform.rotation = transform.rotation;
         }
-
     }
 }

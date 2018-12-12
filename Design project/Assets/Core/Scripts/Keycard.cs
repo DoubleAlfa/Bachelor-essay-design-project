@@ -8,7 +8,7 @@ public class Keycard : Interactable,IInteractable,IItem {
     Sprite icon;
     Inventory inv;
     [SerializeField]
-    string door;
+    string toDoor;
     public GameObject Gameobject
     {
         get { return gameObject; }
@@ -20,6 +20,10 @@ public class Keycard : Interactable,IInteractable,IItem {
     public Sprite Icon
     {
         get { return icon; }
+    }
+    public string ToDoor
+    {
+       get{ return toDoor; }
     }
 	// Use this for initialization
 	protected override void Start ()
