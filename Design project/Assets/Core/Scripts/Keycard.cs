@@ -7,6 +7,8 @@ public class Keycard : Interactable,IInteractable,IItem {
     [SerializeField]
     Sprite icon;
     Inventory inv;
+    [SerializeField]
+    string door;
     public GameObject Gameobject
     {
         get { return gameObject; }
