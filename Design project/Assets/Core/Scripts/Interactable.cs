@@ -17,7 +17,6 @@ public class Interactable : MonoBehaviour {
         
     }
 
-
     public virtual void Highlight(bool active)
     {
         if (active)
