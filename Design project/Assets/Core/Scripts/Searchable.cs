@@ -10,14 +10,11 @@ public class Searchable : Interactable, IInteractable
     [SerializeField] bool hasItem;
     [SerializeField] GameObject keyCard;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         inv = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).transform.GetChild(0).GetComponent<Inventory>();
         AudioSource audio = GetComponent<AudioSource>();
-    }
-    public GameObject Gameobject
-    {
-        get { return gameObject; }
     }
 
     public void Interact()

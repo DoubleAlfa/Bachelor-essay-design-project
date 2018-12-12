@@ -7,6 +7,10 @@ public class Interactable : MonoBehaviour {
     protected Color startColor;
     protected Renderer rend;
     protected GameManager gm;
+    public GameObject Gameobject
+    {
+        get { return gameObject; }
+    }
 
     // Use this for initialization
     protected virtual void Start ()

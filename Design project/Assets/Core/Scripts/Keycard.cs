@@ -9,10 +9,6 @@ public class Keycard : Interactable,IInteractable,IItem {
     Inventory inv;
     [SerializeField]
     string toDoor;
-    public GameObject Gameobject
-    {
-        get { return gameObject; }
-    }
     public bool Equip
     {
         get { return false; }

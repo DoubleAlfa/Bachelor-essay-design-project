@@ -32,11 +32,7 @@ public class Book : Interactable, IInteractable
     string[] items = { "person", "apple", "boat", "rabbit", "animal", "friend", "sword", "piece of food", "item", "hat", "wand", "cloak", "silverware", "doorknob", "air guitar elemental" };
     string[][] words = new string[5][];
     #endregion
-
-    public GameObject Gameobject
-    {
-        get { return gameObject; }
-    }
+    
 
     // Use this for initialization
     protected override void Start()

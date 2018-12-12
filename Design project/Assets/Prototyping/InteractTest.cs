@@ -6,12 +6,6 @@ public class InteractTest : Interactable, IInteractable
 {
     float counter;
     bool spin;
-
-
-    public GameObject Gameobject
-    {
-        get { return gameObject; }
-    }
     
     
     void Update()
