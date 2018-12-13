@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public interface IInteractable
 {
     void Interact();
-    void Highlight(bool isActive);
+    bool Highlight(bool isActive);
 
     GameObject Gameobject
     {
@@ -50,10 +50,11 @@ public class Interact : MonoBehaviour
         if (Physics.Raycast(camera.position,camera.forward, out hit, interactRange))
         {
             //If its interactable, show that we can interact with it
-            if (hit.transform.tag == "Interactable" && objectName != hit.transform.name)
+            if (hit.transform.tag == "Interactable")
             {
                 InteractActive(true);
-            }//If we can't interact with it, this makes sure the player knows.
+            }
+            //If we can't interact with it, this makes sure the player knows.
             else if(hit.transform.tag != "Interactable")
             {
                 InteractActive(false);
@@ -69,7 +70,6 @@ public class Interact : MonoBehaviour
         {
             interactObject.Interact();
         }
-        
     }
 
     void InteractActive(bool active) //Toggles if interact-mode is active or not.
@@ -81,13 +81,17 @@ public class Interact : MonoBehaviour
         }
         if (active)
         {
+            
             interactObject = hit.transform.GetComponent<IInteractable>();
             objectName = hit.transform.name;
-            interactObject.Highlight(true);
+            if (!interactObject.Highlight(true))
+            {
+                interactIcon.SetActive(false);
+                return;
+            }
         }
         else
         {
-            
             objectName = "";
         }
         interactIcon.SetActive(active);
