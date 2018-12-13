@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : Interactable, IInteractable
-{
+public class DoubleDoors : Interactable,IInteractable {
 
     [SerializeField]
     bool locked;
@@ -22,8 +21,9 @@ public class Door : Interactable, IInteractable
     Inventory inv;
     AudioSource audio;
     Animation anim;
-    Animation closeAnim;
-    BoxCollider[] coll;
+    BoxCollider coll;
+    Renderer[] rends;
+    Color[] startColors;
     bool isOpen;
     // Use this for initialization
     protected override void Start()
@@ -32,20 +32,22 @@ public class Door : Interactable, IInteractable
         audio = GetComponent<AudioSource>();
         if (rend == null)
         {
-            rend = GetComponentInChildren<Renderer>();
-            startColor = rend.material.color;
+            rends = GetComponentsInChildren<Renderer>();
+            startColors = new Color[rends.Length];
+            for (int i = 0; i < rends.Length; i++)
+            {
+                startColors[i] = rends[i].material.color;
+            }
         }
+        coll = GetComponent<BoxCollider>();
         anim = GetComponent<Animation>();
-        closeAnim = transform.GetChild(0).GetComponent<Animation>(); //The animation for closing the door is in a child due to the way the prefab is made
-        coll = GetComponents<BoxCollider>();
-        coll[1].enabled = false;
         inv = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).GetComponent<Inventory>();
     }
 
 
     public void Interact()
     {
-        if (!anim.isPlaying && !closeAnim.isPlaying)
+        if (!anim.isPlaying)
         {
             if (locked) //The door is locked
             {
@@ -72,19 +74,16 @@ public class Door : Interactable, IInteractable
                     if (!isOpen)
                     {
                         audio.clip = open;
-                        anim.Play();
+                        anim.Play("DoubleDoorOpen");
+                        //coll.enabled = false;
                     }
                     else
                     {
                         audio.clip = close;
-                        closeAnim.Play();
+                        anim.Play("DoubleDoorClose");
                     }
                     audio.Play();
                     isOpen = !isOpen;
-                    for (int i = 0; i < coll.Length; i++)
-                    {
-                        coll[i].enabled = !coll[i].enabled;
-                    }
                 }
             }
         }
@@ -92,24 +91,40 @@ public class Door : Interactable, IInteractable
     }
     public override bool Highlight(bool active) //Handles if the door should be highlighted in green, red or not at all.
     {
-        if (anim.isPlaying || closeAnim.isPlaying)
+        if (anim.isPlaying)
         {
-            print("PLAYING");
-            rend.material.color = startColor;
+            for (int i = 0; i < rends.Length; i++)
+            {
+                rends[i].material.color = startColors[i];
+            }
             return false;
         }
 
         if (active)
         {
             if (!locked || hasKeyCard(inv.PlayerInventory))
-                rend.material.color = Color.green;
+            {
+                for (int i = 0; i < rends.Length; i++)
+                {
+                    rends[i].material.color = Color.green;
+                }
+            }
+                
             else
             {
-                rend.material.color = Color.red;
+                for (int i = 0; i < rends.Length; i++)
+                {
+                    rends[i].material.color = Color.red;
+                }
             }
         }
         else
-            rend.material.color = startColor;
+        {
+            for (int i = 0; i < rends.Length; i++)
+            {
+                rends[i].material.color = startColors[i];
+            }
+        }
         return true;
 
     }
