@@ -9,7 +9,7 @@ public class Hint : MonoBehaviour {
     [SerializeField]
     AudioClip[] hints;
     AudioClip activeHint;
-
+    int hint;
 
 	// Use this for initialization
 	void Start ()
@@ -26,6 +26,12 @@ public class Hint : MonoBehaviour {
             speech.clip = activeHint;
             speech.Play();
         }
+    }
+    public void NextHint()
+    {
+        activeHint = hints[++hint];
+        speech.clip = activeHint;
+        speech.Play();
     }
 
 

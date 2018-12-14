@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Demoscene Freitas.unity
+    guid: e67536c1915ad0440b47df327ea7efbf
+  - enabled: 1
+    path: Assets/Demoscene Freitas overvaning.unity
+    guid: ff175830787338344ae546d2faaa356d
   m_configObjects: {}
