@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 5400000}
   - component: {fileID: 8200000}
   - component: {fileID: 114206693369248992}
-  m_Layer: 0
+  - component: {fileID: 114770674720899570}
+  m_Layer: 2
   m_Name: FPSController
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -31,7 +32,7 @@ GameObject:
   - component: {fileID: 2000000}
   - component: {fileID: 8100000}
   - component: {fileID: 12474086}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -390,7 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4111860143751954}
   - component: {fileID: 114380026194274210}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,3 +434,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 114015404798113430, guid: e9abfd5aeb821bb458a0c87da036af7e, type: 2}
+--- !u!114 &114770674720899570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3189504c0e54c024393a41f82470c72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hints:
+  - {fileID: 8300000, guid: 449257b8f1aee744782ccc6b1a280ff8, type: 3}
