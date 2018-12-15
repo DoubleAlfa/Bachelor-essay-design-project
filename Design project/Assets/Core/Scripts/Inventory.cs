@@ -32,6 +32,7 @@ public class Inventory : MonoBehaviour
     {
         inventory = new List<GameObject>();
         visualInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(1);
+        DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Canvas"));
 	}
 	
 

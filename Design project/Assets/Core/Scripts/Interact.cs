@@ -47,7 +47,7 @@ public class Interact : MonoBehaviour
     {
         Debug.DrawRay(camera.position, camera.forward);
         //Uses raycast to detect if we're looking at something we can interact with
-        if (Physics.Raycast(camera.position,camera.forward, out hit, interactRange))
+        if (Physics.Raycast(camera.position,camera.forward, out hit, interactRange) && gm.State == Gamestate.Playing)
         {
             //If its interactable, show that we can interact with it
             if (hit.transform.tag == "Interactable")

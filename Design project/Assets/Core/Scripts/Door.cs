@@ -65,7 +65,7 @@ public class Door : Interactable, IInteractable
             {
                 if (toOtherFloor)
                 {
-
+                    gm.ToOtherFloor();
                 }
                 else //Opens or closes the door 
                 {
@@ -94,7 +94,6 @@ public class Door : Interactable, IInteractable
     {
         if (anim.isPlaying || closeAnim.isPlaying)
         {
-            print("PLAYING");
             rend.material.color = startColor;
             return false;
         }
