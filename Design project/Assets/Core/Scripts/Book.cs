@@ -85,7 +85,7 @@ public class Book : Interactable, IInteractable
         }
     }
 
-    public void Interact()
+    public void Interact() //Opens the book if it does not contain a keycard, if it does, it drops the keycard instead.
     {
         if (keyCard == null)
         {
@@ -119,7 +119,7 @@ public class Book : Interactable, IInteractable
 
     }
 
-    void GenerateText(Text t)
+    void GenerateText(Text t) //Generates a nonsenseical text for the book
     {
         string text = "";
         int rows = Random.Range(5, 10);
@@ -147,7 +147,7 @@ public class Book : Interactable, IInteractable
         t.text = text;
     }
 
-    bool IsVowel(char c)
+    bool IsVowel(char c) //returns true if the given char is a vowel
     {
         switch (c)
         {
@@ -157,7 +157,6 @@ public class Book : Interactable, IInteractable
             case 'o':
             case 'u':
                 return true;
-                break;
         }
         return false;
     }

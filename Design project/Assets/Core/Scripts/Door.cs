@@ -92,25 +92,30 @@ public class Door : Interactable, IInteractable
     }
     public override bool Highlight(bool active) //Handles if the door should be highlighted in green, red or not at all.
     {
-        if (anim.isPlaying || closeAnim.isPlaying)
+        if (gm.State == Gamestate.Playing)
         {
-            rend.material.color = startColor;
-            return false;
-        }
 
-        if (active)
-        {
-            if (!locked || hasKeyCard(inv.PlayerInventory))
-                rend.material.color = Color.green;
-            else
+
+            if (anim.isPlaying || closeAnim.isPlaying)
             {
-                rend.material.color = Color.red;
+                rend.material.color = startColor;
+                return false;
             }
-        }
-        else
-            rend.material.color = startColor;
-        return true;
 
+            if (active)
+            {
+                if (!locked || hasKeyCard(inv.PlayerInventory))
+                    rend.material.color = Color.green;
+                else
+                {
+                    rend.material.color = Color.red;
+                }
+            }
+            else
+                rend.material.color = startColor;
+            return true;
+        }
+        return false;
     }
 
     bool hasKeyCard(List<GameObject> inventory) //Returns true if the player has a keycard.

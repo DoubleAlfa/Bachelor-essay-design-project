@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//A superclass for everything interactable.
 public class Interactable : MonoBehaviour
 {
 

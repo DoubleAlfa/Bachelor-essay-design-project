@@ -36,7 +36,7 @@ public class Inventory : MonoBehaviour
 	}
 	
 
-    public void AddItem(GameObject _newItem)
+    public void AddItem(GameObject _newItem) //Adds an item to the inventory
     {
         inventory.Add(_newItem);
         IItem _item = _newItem.GetComponent<IItem>();

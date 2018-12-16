@@ -89,9 +89,9 @@ public class DoubleDoors : Interactable,IInteractable {
         }
 
     }
-    public override bool Highlight(bool active) //Handles if the door should be highlighted in green, red or not at all.
+    public override bool Highlight(bool active) //Handles if the door should be highlighted in green, red or not at all. Also returnes if we can interact with it right now or not
     {
-        if (anim.isPlaying)
+        if (anim.isPlaying) //If the door is currentlly moving, we want interact with it
         {
             for (int i = 0; i < rends.Length; i++)
             {
@@ -100,9 +100,9 @@ public class DoubleDoors : Interactable,IInteractable {
             return false;
         }
 
-        if (active)
+        if (active) //If we want to highlight the doors
         {
-            if (!locked || hasKeyCard(inv.PlayerInventory))
+            if (!locked || hasKeyCard(inv.PlayerInventory)) // if it's open or we can unlock the door, the highlight becomes green
             {
                 for (int i = 0; i < rends.Length; i++)
                 {
@@ -110,7 +110,7 @@ public class DoubleDoors : Interactable,IInteractable {
                 }
             }
                 
-            else
+            else //if it's locked and we do not have the key, the highlight becomes red
             {
                 for (int i = 0; i < rends.Length; i++)
                 {
@@ -118,7 +118,7 @@ public class DoubleDoors : Interactable,IInteractable {
                 }
             }
         }
-        else
+        else // Resets the color
         {
             for (int i = 0; i < rends.Length; i++)
             {

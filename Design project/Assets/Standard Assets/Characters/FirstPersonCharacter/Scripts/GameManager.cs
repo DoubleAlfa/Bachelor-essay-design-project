@@ -36,8 +36,8 @@ public class GameManager : MonoBehaviour {
 
     public void ToOtherFloor()
     {
-        //state = Gamestate.Paused;
-        //SceneManager.LoadScene(++sceneCounter);
+        state = Gamestate.Paused;
+        SceneManager.LoadScene(++sceneCounter);
     }
 }
 

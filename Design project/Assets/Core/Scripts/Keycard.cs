@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Keycard : Interactable,IInteractable,IItem {
-
+public class Keycard : Interactable, IInteractable, IItem
+{
+    #region Variables
     [SerializeField]
     Sprite icon;
     Inventory inv;
     [SerializeField]
     string toDoor;
+    #endregion
+
+    #region properties
     public bool Equip
     {
         get { return false; }
@@ -19,15 +23,17 @@ public class Keycard : Interactable,IInteractable,IItem {
     }
     public string ToDoor
     {
-       get{ return toDoor; }
+        get { return toDoor; }
     }
-	// Use this for initialization
-	protected override void Start ()
+    #endregion
+
+    // Use this for initialization
+    protected override void Start()
     {
         base.Start();
         inv = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).GetComponent<Inventory>();
-	}
-	
+    }
+
 
     public void Interact()
     {
