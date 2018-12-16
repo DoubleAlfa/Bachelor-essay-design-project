@@ -7,6 +7,9 @@ TagManager:
   - Interactable
   - Canvas
   - GameManager
+  - Spawner
+  - Hands
+  - Inventory
   layers:
   - Default
   - TransparentFX

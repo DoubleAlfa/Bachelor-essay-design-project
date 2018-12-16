@@ -390,10 +390,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4111860143751954}
-  - component: {fileID: 114380026194274210}
   m_Layer: 2
   m_Name: Hands
-  m_TagString: Untagged
+  m_TagString: Hands
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -422,18 +421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2af944cc35377448b71f828f9a367a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114380026194274210
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1684931869652872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eab0e88b1af18c24797d114760fa3ab2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 114015404798113430, guid: e9abfd5aeb821bb458a0c87da036af7e, type: 2}
 --- !u!114 &114770674720899570
 MonoBehaviour:
   m_ObjectHideFlags: 1

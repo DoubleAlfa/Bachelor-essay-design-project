@@ -7,37 +7,60 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public enum Gamestate { Playing, Paused, Reading }
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     Gamestate state = Gamestate.Playing;
     [SerializeField]
     string[] sceneNames;
     [SerializeField]
-    int sceneCounter =0;
+    int sceneCounter = 0;
+    GameObject player;
+    Inventory inv;
+    bool firstLoad = true;
 
-    void Start()
+    public bool FirstLoad
     {
-        DontDestroyOnLoad(gameObject);    
+        get { return firstLoad; }
     }
 
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            state = Gamestate.Playing;
-        }
-    }
     public Gamestate State
     {
         get { return state; }
         set { state = value; }
     }
 
+    void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+        inv = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+    }
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            state = Gamestate.Playing;
+        }
+    }
+
     public void ToOtherFloor()
     {
+        inv.PrepareSceneChange();
+        firstLoad = false;
         state = Gamestate.Paused;
         SceneManager.LoadScene(++sceneCounter);
+        StartCoroutine(playNextFrame());
+    }
+
+    IEnumerator playNextFrame()
+    {
+        
+        yield return new WaitForEndOfFrame();
+        state = Gamestate.Playing;
+        yield return new WaitForFixedUpdate();
+        inv.SetEquipment();
     }
 }
 

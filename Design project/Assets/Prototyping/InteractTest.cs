@@ -12,7 +12,6 @@ public class InteractTest : Interactable, IInteractable
     {
         if(spin)
         {
-            print("EYEYEYE");
             transform.Rotate(Vector3.up * Time.deltaTime * 50);
             counter += Time.deltaTime * 50;
             if(counter >= 90)
@@ -26,7 +25,6 @@ public class InteractTest : Interactable, IInteractable
     }
 	public void Interact()
     {
-        print("JAHAAA!");
         if(!spin)
         {
             spin = true;
