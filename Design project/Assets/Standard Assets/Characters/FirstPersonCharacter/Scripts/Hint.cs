@@ -35,14 +35,5 @@ public class Hint : MonoBehaviour {
         speech.Play();
     }
 
-    public void Say(AudioClip dialogue)
-    {
-        if(!speech.isPlaying)
-        {
-            speech.clip = dialogue;
-            speech.Play();
-        }
-    }
-
 
 }

@@ -78,12 +78,9 @@ public class Inventory : MonoBehaviour
             if (inventory[i].GetComponent<IItem>().Equip)
             {
                 print("HEJ!");
-                Flashlight f = inventory[i].GetComponent<Flashlight>();
-                f.StartAfterScene();
                 inventory[i].transform.SetParent(hands.transform);
                 inventory[i].transform.position = hands.transform.position;
                 inventory[i].transform.rotation = hands.transform.rotation;
-                inventory[i].GetComponent<Flashlight>().Equiped = true;
             }
         }
     }

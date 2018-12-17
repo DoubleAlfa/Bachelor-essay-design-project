@@ -23,9 +23,9 @@ public class Flashlight : Interactable, IInteractable, IItem
         get { return equip; }
     }
 
-    public bool Equiped
+    public GameObject Gameobject
     {
-        set { equiped = value; }
+        get { return gameObject; }
     }
 
     public Sprite Icon
@@ -45,19 +45,13 @@ public class Flashlight : Interactable, IInteractable, IItem
         lights.gameObject.SetActive(false);
         batteryCharge *= Random.Range(2,5);
     }
-    public void StartAfterScene()
-    {
-        inv = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-        interact = FindObjectOfType<Interact>();
-        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-    }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
             print(batteryCharge);
-        if (batteryCharge > 0) 
+        if (batteryCharge > 0) //Only 
         {
             if (equiped && Input.GetKeyDown(KeyCode.E) && !interact.InteractIsActive) //Toggles the flashlight
             {
