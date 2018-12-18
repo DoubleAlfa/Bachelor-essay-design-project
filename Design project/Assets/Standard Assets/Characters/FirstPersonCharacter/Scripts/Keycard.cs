@@ -8,6 +8,7 @@ public class Keycard : Interactable, IInteractable, IItem
     [SerializeField]
     Sprite icon;
     Inventory inv;
+    Hint h;
     [SerializeField]
     string toDoor;
     #endregion
@@ -31,13 +32,16 @@ public class Keycard : Interactable, IInteractable, IItem
     protected override void Start()
     {
         base.Start();
-        inv = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).GetComponent<Inventory>();
+        inv = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+        h = FindObjectOfType<Hint>();
     }
 
 
     public void Interact()
     {
         inv.AddItem(gameObject);
+        h.NextHint();
         gameObject.SetActive(false);
+
     }
 }

@@ -30,7 +30,7 @@ public class Hint : MonoBehaviour {
     }
     public void NextHint() //Gives a new hint to the player.
     {
-        activeHint = hints[++hint];
+        activeHint = hints[hint++];
         speech.clip = activeHint;
         speech.Play();
     }

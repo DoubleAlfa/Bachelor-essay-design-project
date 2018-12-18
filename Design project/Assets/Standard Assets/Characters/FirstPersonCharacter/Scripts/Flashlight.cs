@@ -49,8 +49,6 @@ public class Flashlight : Interactable, IInteractable, IItem
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-            print(batteryCharge);
         if (batteryCharge > 0) //Only 
         {
             if (equiped && Input.GetKeyDown(KeyCode.E) && !interact.InteractIsActive) //Toggles the flashlight

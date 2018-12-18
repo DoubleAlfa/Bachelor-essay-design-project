@@ -32,7 +32,7 @@ public class Book : Interactable, IInteractable
     string[] items = { "person", "apple", "boat", "rabbit", "animal", "friend", "sword", "piece of food", "item", "hat", "wand", "cloak", "silverware", "doorknob", "air guitar elemental" };
     string[][] words = new string[5][];
     #endregion
-    
+
 
     // Use this for initialization
     protected override void Start()
@@ -49,7 +49,7 @@ public class Book : Interactable, IInteractable
     }
     void Update()
     {
-        if (isOpen && (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.E) || Input.GetMouseButton(0) ))
+        if (isOpen && (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButton(0)))
         {
             hint.SetActive(false);
             isOpen = false;
@@ -103,7 +103,6 @@ public class Book : Interactable, IInteractable
                 postIt.SetActive(true);
                 postItSymbol.sprite = nextBook;
             }
-
             else
                 postIt.SetActive(false);
             gm.State = Gamestate.Reading;
