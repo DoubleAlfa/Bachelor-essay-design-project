@@ -353,7 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locked: 1
   toOtherFloor: 0
-  code: Cells
+  code: 
   close: {fileID: 8300000, guid: 8fbdb285cdc44384db52837a466b281a, type: 3}
   open: {fileID: 8300000, guid: 9699c9b77233e84419cbaa27a69fd83f, type: 3}
   notOpen: {fileID: 8300000, guid: e5c19d507c0c8a34cbe0f9d5801530c7, type: 3}
