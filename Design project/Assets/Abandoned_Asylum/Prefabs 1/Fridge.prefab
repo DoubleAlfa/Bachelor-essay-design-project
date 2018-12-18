@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4414669018636212}
   - component: {fileID: 33930823322358950}
   - component: {fileID: 23237666725571788}
+  - component: {fileID: 64478581983826902}
   m_Layer: 0
   m_Name: Fridge_Case
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 4813721509525424}
   - component: {fileID: 33064254024005862}
   - component: {fileID: 23174303752553326}
+  - component: {fileID: 64153241051208408}
   m_Layer: 0
   m_Name: Fridge_DoorD
   m_TagString: Untagged
@@ -53,7 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4015632005866096}
-  - component: {fileID: 65892276251215718}
+  - component: {fileID: 64883571447682052}
   m_Layer: 0
   m_Name: Fridge
   m_TagString: Untagged
@@ -71,6 +73,7 @@ GameObject:
   - component: {fileID: 4773967892278594}
   - component: {fileID: 33172606088989262}
   - component: {fileID: 23287274315827884}
+  - component: {fileID: 64839141575157228}
   m_Layer: 0
   m_Name: Fridge_DoorH
   m_TagString: Untagged
@@ -84,16 +87,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1689357584028640}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 5.06, y: 0.13000011, z: 20.87}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 82.43618, y: 17.676031, z: 32.394077}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4414669018636212}
   - {fileID: 4813721509525424}
   - {fileID: 4773967892278594}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4414669018636212
 Transform:
   m_ObjectHideFlags: 1
@@ -259,8 +262,50 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1523183038438638}
   m_Mesh: {fileID: 4300002, guid: 7661b0d73cd9aa144a2fcbed3f216530, type: 3}
---- !u!65 &65892276251215718
-BoxCollider:
+--- !u!64 &64153241051208408
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1574335585318228}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 7661b0d73cd9aa144a2fcbed3f216530, type: 3}
+--- !u!64 &64478581983826902
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1523183038438638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300002, guid: 7661b0d73cd9aa144a2fcbed3f216530, type: 3}
+--- !u!64 &64839141575157228
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1766792696801854}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300004, guid: 7661b0d73cd9aa144a2fcbed3f216530, type: 3}
+--- !u!64 &64883571447682052
+MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -268,6 +313,8 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.80498666, y: 1.5360725, z: 0.7175061}
-  m_Center: {x: -0.0190866, y: 0.77064645, z: -0.017753124}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 0}
