@@ -120,9 +120,9 @@ public class Door : Interactable, IInteractable
     {
         for (int i = 0; i < inventory.Count; i++)
         {
-            if (inventory[0].name.Length >= 7 && inventory[0].name.Substring(0, 7) == "KeyCard")
+            if (inventory[i].name.Length >= 7 && inventory[i].name.Substring(0, 7) == "KeyCard")
             {
-                if (inventory[0].GetComponent<Keycard>().ToDoor == code)
+                if (inventory[i].GetComponent<Keycard>().ToDoor == code)
                     return true;
             }
         }

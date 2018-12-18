@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41937178043d14429211c9a968b38b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locked: 1
+  locked: 0
   toOtherFloor: 0
   code: 
   close: {fileID: 8300000, guid: 8fbdb285cdc44384db52837a466b281a, type: 3}
