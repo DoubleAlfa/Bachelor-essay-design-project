@@ -42,6 +42,10 @@ public class Flashlight : Interactable, IInteractable, IItem
     // Use this for initialization
     protected override void Start()
     {
+        if(FindObjectsOfType<Flashlight>().Length > 1)
+        {
+            Destroy(gameObject);
+        }
         base.Start();
         inv = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         lights = transform.GetChild(0);

@@ -11,6 +11,8 @@ public class Keycard : Interactable, IInteractable, IItem
     Hint h;
     [SerializeField]
     string toDoor;
+    [SerializeField]
+    int hintNr;
     #endregion
 
     #region properties
@@ -40,7 +42,7 @@ public class Keycard : Interactable, IInteractable, IItem
     public void Interact()
     {
         inv.AddItem(gameObject);
-        h.NextHint();
+        h.NextHint(hintNr);
         gameObject.SetActive(false);
 
     }

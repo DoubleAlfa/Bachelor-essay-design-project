@@ -2,20 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NextHint : MonoBehaviour {
+public class NextHint : MonoBehaviour
+{
 
 
     Hint h;
-	// Use this for initialization
-	void Start ()
+    [SerializeField]
+    int hintNr;
+    // Use this for initialization
+    void Start()
     {
         h = FindObjectOfType<Hint>();
-	}
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        h.NextHint();
-        Destroy(this);
+        if (other.tag == "Player")
+        {
+            h.NextHint(hintNr);
+            Destroy(this);
+        }
+
     }
 
 

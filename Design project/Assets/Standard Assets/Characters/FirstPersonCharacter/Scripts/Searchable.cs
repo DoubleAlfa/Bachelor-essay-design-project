@@ -6,23 +6,24 @@ public class Searchable : Interactable, IInteractable
 {
     Inventory inv;
     AudioSource audio;
-    [SerializeField] AudioClip success, failure;
-    [SerializeField] bool hasItem;
+    Hint h;
+    [SerializeField] AudioClip failure;
     [SerializeField] GameObject keyCard;
+    [SerializeField] int hintNr;
 
     protected override void Start()
     {
         base.Start();
-        inv = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).transform.GetChild(0).GetComponent<Inventory>();
-        AudioSource audio = GetComponent<AudioSource>();
+        h = FindObjectOfType<Hint>();
+        inv = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+        audio = gameObject.AddComponent<AudioSource>();
     }
 
     public void Interact()
     {
-        if (gameObject.tag == "Interactable")
+        if (keyCard != null )
         {
-            audio.clip = success;
-            audio.Play();
+            h.NextHint(hintNr);
             inv.AddItem(keyCard);
         }
         else
