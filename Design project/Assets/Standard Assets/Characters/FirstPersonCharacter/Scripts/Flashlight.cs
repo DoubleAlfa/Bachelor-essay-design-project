@@ -63,7 +63,6 @@ public class Flashlight : Interactable, IInteractable, IItem
             //print(equiped + " " + !interact.InteractIsActive + " " + gm.State);
             if (equiped && Input.GetKeyDown(KeyCode.E) && !interact.InteractIsActive && gm.State == Gamestate.Playing) //Toggles the flashlight
             {
-                print("HELLOOOO!");
                 lights.gameObject.SetActive(!lights.gameObject.activeInHierarchy);
                 if (lights.gameObject.activeInHierarchy)
                     sfx.clip = sounds[0];
