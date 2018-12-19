@@ -22,10 +22,15 @@ public class Flashlight : Interactable, IInteractable, IItem
     {
         get { return equip; }
     }
-
-    public GameObject Gameobject
+    
+    public bool Equiped
     {
-        get { return gameObject; }
+        set { equiped = value; }
+    }
+
+    public Interact Int
+    {
+        set { interact = value; }
     }
 
     public Sprite Icon
@@ -51,8 +56,10 @@ public class Flashlight : Interactable, IInteractable, IItem
     {
         if (batteryCharge > 0) //if we have batteries left
         {
+            //print(equiped + " " + !interact.InteractIsActive + " " + gm.State);
             if (equiped && Input.GetKeyDown(KeyCode.E) && !interact.InteractIsActive && gm.State == Gamestate.Playing) //Toggles the flashlight
             {
+                print("HELLOOOO!");
                 lights.gameObject.SetActive(!lights.gameObject.activeInHierarchy);
                 if (lights.gameObject.activeInHierarchy)
                     sfx.clip = sounds[0];

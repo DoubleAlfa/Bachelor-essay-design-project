@@ -74,13 +74,14 @@ public class Inventory : MonoBehaviour
             hands = GameObject.FindGameObjectWithTag("Hands");
         for (int i = 0; i < inventory.Count; i++)
         {
-
             if (inventory[i].GetComponent<IItem>().Equip)
             {
-                print("HEJ!");
                 inventory[i].transform.SetParent(hands.transform);
                 inventory[i].transform.position = hands.transform.position;
                 inventory[i].transform.rotation = hands.transform.rotation;
+                Flashlight f = inventory[i].GetComponent<Flashlight>();
+                f.Equiped = true;
+                f.Int = GameObject.FindGameObjectWithTag("Player").GetComponent<Interact>();
             }
         }
     }
