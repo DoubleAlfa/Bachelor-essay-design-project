@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class NextHint : MonoBehaviour
 {
-
-
     Hint h;
     [SerializeField]
     int hintNr;
@@ -19,8 +17,14 @@ public class NextHint : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            h.NextHint(hintNr);
-            Destroy(this);
+
+
+            if (h.HintNumber == hintNr)
+            {
+                h.NextHint(hintNr);
+                Destroy(this);
+            }
+
         }
 
     }

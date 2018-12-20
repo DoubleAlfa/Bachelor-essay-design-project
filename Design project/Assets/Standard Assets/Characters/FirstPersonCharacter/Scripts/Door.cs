@@ -40,6 +40,11 @@ public class Door : Interactable, IInteractable
         coll = GetComponents<BoxCollider>();
         coll[1].enabled = false;
         inv = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+        if(GameObject.FindGameObjectWithTag("Hint").GetComponent<Hint>().HintNumber >5 && code == "Cells")
+        {
+            code = "THE DOORS MUST BE CLOSED! ALWAYS!";
+            locked = true;
+        }
     }
 
 

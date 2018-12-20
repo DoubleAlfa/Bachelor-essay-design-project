@@ -17,9 +17,16 @@ public class Hint : MonoBehaviour
     {
         get { return hint; }
     }
+
+    void Awake()
+    {
+        if (GameObject.FindGameObjectsWithTag("Hint").Length > 1)
+            Destroy(gameObject);
+    }
     // Use this for initialization
     void Start()
     {
+        
         speech = gameObject.AddComponent<AudioSource>();
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         activeHint = hints[0];

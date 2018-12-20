@@ -27,17 +27,21 @@ public class Inventory : MonoBehaviour
     {
         get { return inventory; }
     }
-
+    void Awake()
+    {
+        if (GameObject.FindGameObjectsWithTag("Inventory").Length > 1)
+            Destroy(gameObject);
+    }
     // Use this for initialization
     void Start()
     {
+        
         inventory = new List<GameObject>();
         visualInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(1);
         DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Canvas"));
         DontDestroyOnLoad(gameObject);
     }
-
-
+    
     public void AddItem(GameObject _newItem) //Adds an item to the inventory
     {
         if (hands == null)
@@ -84,5 +88,14 @@ public class Inventory : MonoBehaviour
                 f.Int = GameObject.FindGameObjectWithTag("Player").GetComponent<Interact>();
             }
         }
+    }
+    public bool HasFlashlight()
+    {
+        foreach (GameObject item in inventory)
+        {
+            if(item.GetComponent<IItem>().Equip)
+                return true;
+        }
+        return false;
     }
 }

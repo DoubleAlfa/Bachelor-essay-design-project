@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
         set { state = value; }
     }
 
+    void Awake()
+    {
+        if (GameObject.FindGameObjectsWithTag("GameManager").Length > 1)
+            Destroy(gameObject);
+    }
     void Start()
     {
         DontDestroyOnLoad(gameObject);
