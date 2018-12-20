@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         inv.PrepareSceneChange();
         firstLoad = false;
         state = Gamestate.Paused;
-        SceneManager.LoadScene(++sceneCounter);
+        SceneManager.LoadScene(++sceneCounter %2);
         StartCoroutine(playNextFrame());
     }
 
