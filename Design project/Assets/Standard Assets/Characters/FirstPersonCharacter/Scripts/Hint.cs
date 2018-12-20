@@ -13,6 +13,10 @@ public class Hint : MonoBehaviour
     GameManager gm;
     int hint;
 
+    public int HintNumber
+    {
+        get { return hint; }
+    }
     // Use this for initialization
     void Start()
     {

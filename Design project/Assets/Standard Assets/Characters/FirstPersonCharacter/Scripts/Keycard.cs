@@ -46,4 +46,14 @@ public class Keycard : Interactable, IInteractable, IItem
         gameObject.SetActive(false);
 
     }
+    void Update ()
+    {
+        if(transform.position.y <= -5)
+        {
+            print("Hej!");
+            inv.AddItem(gameObject);
+            h.NextHint(hintNr);
+            gameObject.SetActive(false);
+        }
+    }
 }
