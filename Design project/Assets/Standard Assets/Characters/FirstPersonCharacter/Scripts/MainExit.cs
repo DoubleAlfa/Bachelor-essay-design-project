@@ -24,24 +24,23 @@ public class MainExit : Interactable, IInteractable
 
     public void Interact()
     {
+        audio.clip = locked;
         if (hint.HintNumber < 7)
         {
             if (!hint.GetComponent<AudioSource>().isPlaying)
             {
                 audio.clip = getTheFile;
-                audio.Play();
             }
 
         }
         else if (hint.HintNumber == 7)
         {
             hint.NextHint(7);
+            audio.Play();
         }
         else
         {
-            audio.clip = locked;
             audio.Play();
         }
-
     }
 }

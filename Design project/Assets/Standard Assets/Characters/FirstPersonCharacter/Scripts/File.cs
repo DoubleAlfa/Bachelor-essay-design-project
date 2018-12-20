@@ -5,11 +5,16 @@ using UnityEngine;
 public class File : Interactable, IInteractable, IItem {
     Inventory inv;
     Hint h;
+    string code = "Exit";
     [SerializeField]
     Sprite s;
     public bool Equip
     {
         get { return false; }
+    }
+    public string Code
+    {
+        get { return code; }
     }
 
     public Sprite Icon
@@ -23,9 +28,6 @@ public class File : Interactable, IInteractable, IItem {
         inv = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         h = GameObject.FindGameObjectWithTag("Hint").GetComponent<Hint>();
 	}
-	
-	
-
     public void Interact()
     {
         inv.AddItem(gameObject);
