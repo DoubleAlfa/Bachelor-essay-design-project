@@ -78,6 +78,8 @@ public class Door : Interactable, IInteractable
                     {
                         audio.clip = open;
                         anim.Play();
+                        if (code == "Exit")
+                            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().WinGame();
                     }
                     else
                     {
@@ -142,4 +144,5 @@ public class Door : Interactable, IInteractable
         }
         return false;
     }
+    
 }

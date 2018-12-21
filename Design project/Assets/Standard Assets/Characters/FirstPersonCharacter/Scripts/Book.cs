@@ -25,11 +25,12 @@ public class Book : Interactable, IInteractable
     GameObject keyCard;
     float posCounter = 0;
     float pullSpeed = 0.5f;
-    string[] subjects = new string[] { "He", "She", "They", "Dogge", "Ferre", "A child", "The one who can't be named", "The friend", "A mysterious man", "A mysterious Woman", "A mysterious person", "God", "Their arch enemy", "Erkan" };
+    string[] subjects = new string[] { "He", "She", "They", "John", "Ferre", "A child", "The one who can't be named", "The friend", "A mysterious man", "A mysterious Woman", "A mysterious person", "God", "Their arch enemy", "Bames Jond" };
     string[] verbs = { "used", "saw", "ate", "caught", "threw", "hid", "fetched", "polished", "stepped on", "drew" };
     string[] aAn = { "a", "an", "the" };
     string[] adjectives = { "blue", "black", "yellow", "orange", "pink", "purple", "black", "grey", "green", "white", "red", "small", "big", "average sized", "jolly", "warm", "cold", "beautiful", "legendary", "evil" };
-    string[] items = { "person", "apple", "boat", "rabbit", "animal", "friend", "sword", "piece of food", "item", "hat", "wand", "cloak", "silverware", "doorknob", "air guitar elemental" };
+    string[] items = { "person", "apple", "boat", "rabbit", "animal", "friend", "sword", "piece of food", "item", "hat", "wand", "cloak", "silverware", "doorknob", "air guitar elemental", "monster" };
+    string[] scary = { "THE DOORS MUST BE CLOSED!","THE DOORS MUST BE CLOSED. ALWAYS." ,"I DON'T WANT TO LEAVE!", "LET ME STAY!", "TWINKLE!", "THEY HAD IT COMING!" };
     string[][] words = new string[5][];
     #endregion
 
@@ -109,11 +110,20 @@ public class Book : Interactable, IInteractable
         }
         else
         {
-            body = GetComponent<Rigidbody>();
-            body.detectCollisions = false;
-            body.freezeRotation = true;
-            body.useGravity = false;
-            pullBook = true;
+            if (GameObject.FindGameObjectWithTag("Hint").GetComponent<Hint>().HintNumber <= 1)
+            {
+                body = GetComponent<Rigidbody>();
+                body.detectCollisions = false;
+                body.freezeRotation = true;
+                body.useGravity = false;
+                pullBook = true;
+            }
+            else
+            {
+                keyCard = null;
+                Interact();
+            }
+
         }
 
     }
@@ -127,18 +137,25 @@ public class Book : Interactable, IInteractable
             int peragraphScentences = Random.Range(1, 10);
             for (int j = 0; j < peragraphScentences; j++)
             {
-                text += subjects[Random.Range(0, subjects.Length)] + " ";
-                text += verbs[Random.Range(0, verbs.Length)] + " ";
-                string adjective = adjectives[Random.Range(0, adjectives.Length)] + " ";
-                int the = Random.Range(1, aAn.Length);
-                if (the == 1)
+                if (Random.Range(0, 100) > 1)
                 {
-                    if (!IsVowel(adjective[0]))
-                        the = 0;
+                    text += subjects[Random.Range(0, subjects.Length)] + " ";
+                    text += verbs[Random.Range(0, verbs.Length)] + " ";
+                    string adjective = adjectives[Random.Range(0, adjectives.Length)] + " ";
+                    int the = Random.Range(1, aAn.Length);
+                    if (the == 1)
+                    {
+                        if (!IsVowel(adjective[0]))
+                            the = 0;
+                    }
+                    text += aAn[the] + " ";
+                    text += adjective;
+                    text += items[Random.Range(0, items.Length)] + ". ";
                 }
-                text += aAn[the] + " ";
-                text += adjective;
-                text += items[Random.Range(0, items.Length)] + ". ";
+                else
+                {
+                    text += scary[Random.Range(0, scary.Length)] + " ";
+                }
             }
             text += "\n\t";
 

@@ -67,6 +67,23 @@ public class GameManager : MonoBehaviour
         yield return new WaitForFixedUpdate();
         inv.SetEquipment();
     }
+    public void WinGame()
+    {
+        StartCoroutine(EndGame());
+    }
+
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(1.5f);
+        GameObject _Canvas = GameObject.FindGameObjectWithTag("Canvas");
+        for (int i = 0; i < _Canvas.transform.childCount - 1; i++)
+        {
+            _Canvas.transform.GetChild(i).gameObject.SetActive(false);
+        }
+        _Canvas.transform.GetChild(4).gameObject.SetActive(true);
+        state = Gamestate.Paused;
+
+    }
 }
 
 

@@ -12,7 +12,7 @@ public interface IInteractable
     {
         get;
     }
-    
+
 }
 
 public class Interact : MonoBehaviour
@@ -47,7 +47,7 @@ public class Interact : MonoBehaviour
     {
         Debug.DrawRay(camera.position, camera.forward);
         //Uses raycast to detect if we're looking at something we can interact with
-        if (Physics.Raycast(camera.position,camera.forward, out hit, interactRange) && gm.State == Gamestate.Playing)
+        if (Physics.Raycast(camera.position, camera.forward, out hit, interactRange) && gm.State == Gamestate.Playing)
         {
             //If its interactable, show that we can interact with it
             if (hit.transform.tag == "Interactable")
@@ -55,7 +55,7 @@ public class Interact : MonoBehaviour
                 InteractActive(true);
             }
             //If we can't interact with it, this makes sure the player knows.
-            else if(hit.transform.tag != "Interactable")
+            else if (hit.transform.tag != "Interactable")
             {
                 InteractActive(false);
             }
@@ -66,7 +66,7 @@ public class Interact : MonoBehaviour
                 InteractActive(false);
         }
         //If we're looking at something that we can interact with and we press 'E', we interact with it. 
-        if(interact && Input.GetKeyDown(KeyCode.E))
+        if (interact && Input.GetKeyDown(KeyCode.E))
         {
             interactObject.Interact();
         }
@@ -77,11 +77,12 @@ public class Interact : MonoBehaviour
         interact = active;
         if (objectName != "")
         {
-            interactObject.Highlight(false);
+            if (gm.State == Gamestate.Playing)
+                interactObject.Highlight(false);
         }
         if (active)
         {
-            
+
             interactObject = hit.transform.GetComponent<IInteractable>();
             objectName = hit.transform.name;
             if (!interactObject.Highlight(true))
