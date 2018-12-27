@@ -41448,6 +41448,10 @@ Prefab:
       propertyPath: m_JumpSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8200000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114770674720899570, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
