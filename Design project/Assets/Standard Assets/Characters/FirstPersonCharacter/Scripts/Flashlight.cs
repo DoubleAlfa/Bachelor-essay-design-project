@@ -52,7 +52,7 @@ public class Flashlight : Interactable, IInteractable, IItem
         interact = FindObjectOfType<Interact>();
         sfx = GetComponent<AudioSource>();
         lights.gameObject.SetActive(false);
-        batteryCharge *= Random.Range(2,5);
+        batteryCharge *= Random.Range(3,6);
     }
 
     // Update is called once per frame
@@ -61,7 +61,7 @@ public class Flashlight : Interactable, IInteractable, IItem
         if (batteryCharge > 0) //if we have batteries left
         {
             //print(equiped + " " + !interact.InteractIsActive + " " + gm.State);
-            if (equiped && Input.GetKeyDown(KeyCode.E) && !interact.InteractIsActive && gm.State == Gamestate.Playing) //Toggles the flashlight
+            if (equiped && Input.GetMouseButtonDown(1) && gm.State == Gamestate.Playing) //Toggles the flashlight
             {
                 lights.gameObject.SetActive(!lights.gameObject.activeInHierarchy);
                 if (lights.gameObject.activeInHierarchy)

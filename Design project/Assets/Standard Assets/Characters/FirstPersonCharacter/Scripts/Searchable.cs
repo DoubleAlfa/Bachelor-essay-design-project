@@ -21,10 +21,11 @@ public class Searchable : Interactable, IInteractable
 
     public void Interact()
     {
-        if (keyCard != null )
+        if (keyCard != null)
         {
             h.NextHint(hintNr);
             inv.AddItem(keyCard);
+            keyCard = null;
         }
         else
         {

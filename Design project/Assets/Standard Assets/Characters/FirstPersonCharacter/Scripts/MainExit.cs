@@ -30,6 +30,7 @@ public class MainExit : Interactable, IInteractable
             if (!hint.GetComponent<AudioSource>().isPlaying)
             {
                 audio.clip = getTheFile;
+                audio.Play();
             }
 
         }
